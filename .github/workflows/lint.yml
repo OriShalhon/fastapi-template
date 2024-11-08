@@ -1,0 +1,37 @@
+name: Python Linting
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GIT_PAT }} 
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+          
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run linter
+        run: |
+          ruff format . || exit 1
+          ruff check . --fix || exit 1
+    
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions@github.com'
+          git add -A
+          git commit -m "Apply ruff formatting" || echo "No changes to commit"
+          git push || exit 0
