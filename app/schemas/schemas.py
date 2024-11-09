@@ -1,7 +1,9 @@
 # this file could be seperated into multiple files, but for simplicity I have kept it in one file for the tamplate
 
-from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel, EmailStr
 
 
 class UserLogin(BaseModel):
@@ -21,3 +23,12 @@ class UserOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    id: Optional[int] = None
