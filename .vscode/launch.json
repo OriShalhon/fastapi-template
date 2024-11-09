@@ -31,7 +31,7 @@
             ],
             "console": "integratedTerminal",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/app"
+                "PYTHONPATH": "${workspaceFolder}/"
             }
         }
     ]
