@@ -2,6 +2,9 @@
 
 This project serves as a starting template for creating **FastAPI** applications with **PostgreSQL** as the database, **SQLAlchemy** as the ORM, **Ruff** for linting, and **GitHub Actions** configured for automated linting and testing. 
 
+
+> **Note**: This project is a work in progress. Not all features described in this README are fully implemented yet.
+
 ## Features
 
 - **FastAPI**: High-performance API framework.

@@ -30,4 +30,6 @@ def login(user_credentials: schemas.UserLogin, db: Session = Depends(get_db)):
 
     # here we generate a jwt token
     return {"data": "login successful"}
+
+
 1
