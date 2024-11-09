@@ -23,7 +23,7 @@ def login(user_credentials: schemas.UserLogin, db: Session = Depends(get_db)):
             status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
         )  # change the details to "Invalid credentials"
 
-    if not utils.verify_password(user_credentials.password, found_user.hashed_password):
+    if not utils.verify_password(user_credentials.password, found_user.password):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect password"
         )  # change the details to "Invalid credentials"
