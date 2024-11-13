@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.models import models
 from app.schemas import schemas
+from app.core.settings import settings
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
@@ -17,9 +18,9 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 # 2. algorithm
 # 3. expiration time
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("EXPIRATION_TIME"))
+SECRET_KEY = settings.jwt_secret_key
+ALGORITHM = settings.jwt_algorithm
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.jwt_expiration_time_minutes
 
 
 # this function is used to create a jwt token

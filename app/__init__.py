@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api.v1 import router as api_router
-from app.config import configure_logging, load_configurations
+from app.core.config import configure_logging, load_configurations
 
 
 @asynccontextmanager
