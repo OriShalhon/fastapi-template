@@ -2,12 +2,10 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
-from dotenv import load_dotenv
-
 
 def load_configurations(app) -> None:
     # Load environment variables from .env file
-    load_dotenv()
+    pass
 
     # all global configuratrions can be defined here.
 

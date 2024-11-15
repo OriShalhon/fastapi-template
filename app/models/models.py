@@ -2,12 +2,13 @@
 
 # here wee define the structure of the db tabbles and the relationships between them
 
-from db.database import Base
 from sqlalchemy import Column, Integer, String
 
 # from sqlalchemy.orm import relationship common to use in the models
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
+
+from app.db.database import Base
 
 
 class User(Base):
