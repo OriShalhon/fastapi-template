@@ -28,12 +28,18 @@ This project serves as a starting template for creating **FastAPI** applications
 │   └── tests           # Unit and integration tests
 ├── .github
 │   └── workflows       # GitHub Actions for linting and testing
+├── alembic
+│   ├── env.py          # Alembic environment configuration
+│   ├── script.py.mako  # Alembic script template
+│   └── versions        # Database migration scripts
 ├── .env.example        # Example environment variables
 ├── Dockerfile          # Docker configuration
 ├── requirements.txt    # Python dependencies
 ├── ruff.toml           # Ruff linting configuration
-└── README.md           # Project documentation
+├── README.md           # Project documentation
+└── alembic.ini         # Alembic configuration file
 ```
+
 
 ## Getting Started
 
@@ -76,7 +82,6 @@ This project serves as a starting template for creating **FastAPI** applications
 To set up database migrations with Alembic:
 
 ```bash
-alembic init migrations
 alembic revision --autogenerate -m "Initial migration"
 alembic upgrade head
 ```
