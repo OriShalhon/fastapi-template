@@ -2,12 +2,19 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-def load_configurations(app) -> None:
-    # Load environment variables from .env file
-    pass
 
-    # all global configuratrions can be defined here.
+def load_configurations(app: FastAPI) -> None:
+    # Enable CORS - Cross-Origin Resource Sharing currently allows all origins
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"], # edit this to allow only specific origins 
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 def configure_logging(log_dir: str = None, log_level=logging.INFO) -> None:
