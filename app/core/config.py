@@ -10,7 +10,7 @@ def load_configurations(app: FastAPI) -> None:
     # Enable CORS - Cross-Origin Resource Sharing currently allows all origins
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"], # edit this to allow only specific origins 
+        allow_origins=["*"],  # edit this to allow only specific origins
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
