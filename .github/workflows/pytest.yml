@@ -1,0 +1,35 @@
+name: PyTest CI
+
+on:
+    pull_request:
+      branches:
+        - master
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+
+            TESTING_DATABASE_URL: ${{ secrets.TESTING_DATABASE_URL }}
+            JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+            JWT_ALGORITHM: ${{ secrets.JWT_ALGORITHM }}
+            JWT_EXPIRATION_TIME_MINUTES: ${{ secrets.JWT_EXPIRATION_TIME_MINUTES }}
+
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  ref: ${{ github.head_ref }}
+                  token: ${{ secrets.GIT_PAT }}
+
+            - name: Set up Python
+              uses: actions/setup-python@v3
+              with:
+                  python-version: 3.9
+
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+            - name: Run tests using pytest
+              run: pytest tests
