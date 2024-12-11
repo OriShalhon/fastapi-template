@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     jwt_secret_key: str
     jwt_algorithm: str
     jwt_expiration_time_minutes: int
+    testing_database_url: str
 
     class config:
         env_file = ".env"
